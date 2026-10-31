@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Планета Земля — 3D</title>
+    <meta name="description" content="Интерактивная реалистичная 3D-модель планеты Земля: страны, горы, города и достопримечательности." />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="globe-canvas" tabindex="0" role="application" aria-label="Interactive 3D Earth globe"></canvas>
+
+      <div id="ui-overlay">
+        <header class="top-bar">
+          <div class="brand">
+            <span class="brand-dot"></span>
+            <span class="brand-title" data-i18n="appTitle">Планета Земля</span>
+          </div>
+          <div class="top-controls">
+            <div class="search-wrap">
+              <input id="search-input" type="search" placeholder="Поиск города или места…" autocomplete="off" aria-label="Search places" />
+              <div id="search-results" class="search-results hidden"></div>
+            </div>
+            <div class="lang-switch">
+              <label for="lang-select" data-i18n="langLabel">Язык</label>
+              <select id="lang-select">
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="zh">中文</option>
+              </select>
+            </div>
+          </div>
+        </header>
+
+        <aside class="hint-panel" aria-live="polite">
+          <p data-i18n="hintRotate">Вращайте: левая кнопка мыши или касание</p>
+          <p data-i18n="hintZoom">Масштаб: колесо мыши / щипок</p>
+          <p data-i18n="hintClick">Клик по точке: карточка места</p>
+          <p data-i18n="hintDbl">Двойной клик: открыть в Google Maps</p>
+        </aside>
+
+        <div id="loader" class="loader">
+          <div class="loader-spinner"></div>
+          <p data-i18n="loading">Загрузка планеты…</p>
+        </div>
+      </div>
+
+      <div id="card" class="card hidden" role="dialog" aria-modal="true" aria-labelledby="card-title">
+        <button id="card-close" class="card-close" aria-label="Close">×</button>
+        <div class="card-image-wrap">
+          <img id="card-image" src="" alt="" loading="lazy" />
+          <div class="card-badge" id="card-type"></div>
+        </div>
+        <div class="card-body">
+          <h2 id="card-title"></h2>
+          <p class="card-meta" id="card-meta"></p>
+          <p class="card-desc" id="card-desc"></p>
+          <div class="card-actions">
+            <button id="card-maps" class="btn btn-primary" data-i18n="openMaps">Открыть в Google Maps</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
